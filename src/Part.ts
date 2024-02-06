@@ -4,13 +4,14 @@ export class Part {
   sourceNode: MediaElementAudioSourceNode;
 
   markup: HTMLDivElement; // the parent HTML element, gets appended to section#parts in index.html
+  //anything we want to display for this part goes in the div and every class instance will have its own version of the div 
   vocalRange: string;
 
   constructor(vocalRange: string, audioElementId: string, audioContext: AudioContext) {
     this.audioContext = audioContext;
-    this.audioElement = document.querySelector(audioElementId) as HTMLAudioElement;
+    this.audioElement = document.querySelector(audioElementId) as HTMLAudioElement; //targets the audio file 
 
-    this.sourceNode = audioContext.createMediaElementSource(this.audioElement)
+    this.sourceNode = audioContext.createMediaElementSource(this.audioElement) //lets us play the audio in the browser
 
     this.vocalRange = vocalRange;
     this.markup = document.createElement('div');
@@ -31,7 +32,8 @@ export class Part {
   // will be used by main.ts to route this Part's output to the audioContext.destination
   // (first, passing it through any global effect nodes)
   patch(): MediaElementAudioSourceNode {
-    return this.sourceNode;
+    return this.sourceNode; //returns the source node which is the audio element we want to use because the target the audio element
+    //then make that an element source to play in the browser for the source node
   }
   
   play(): void {

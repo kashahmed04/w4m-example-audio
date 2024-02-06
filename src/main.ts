@@ -22,7 +22,7 @@ const parts: Part[] = [
 // When we want to do timeupdate and ended events, we only need to talk about one Part.
 // (And apply that value to the others.)
 // We'll select the first one and call it mainAudioElement.
-const mainAudioElement = parts[0].audioElement;
+const mainAudioElement = parts[0].audioElement; //get the audio element for the tenor (instances from the part class)
 
 // We still have a single GainNode for global volume
 const gainNode = audioContext.createGain()
@@ -33,7 +33,8 @@ let duration = -1;
 // Connect each Part to the audioContext.destination (speakers)
 // AND append its HTML markup to the DOM
 parts.forEach((part) => {
-  part.patch().connect(gainNode).connect(audioContext.destination)
+  part.patch().connect(gainNode).connect(audioContext.destination) //we get the audio file and we connect it to the source to the desintion
+  //gainnode 
   partsMarkup.appendChild(part.markup)
 })
 

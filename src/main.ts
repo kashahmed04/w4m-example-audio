@@ -16,18 +16,19 @@ const bassAudio = document.querySelector('#bass-audio') as HTMLAudioElement;
 // Create an AudioContext to hook up our flow.
 const audioContext = new AudioContext()
 
-// GainNode changes the volume
+// GainNode changes the volume (which we grab from our slider)
 const gainNode = audioContext.createGain() //makes the object that controls the slider to go back and forth
-// (which we grab from our slider)
-gainNode.gain.value = parseFloat(mainVolumeSlider.value) //the gain is the audio property we are adjusting and we set its value
-//gamenose.gain is read only so we set the value property
-//this sets the slider one time at the beginning to the beginning of the slider
+
+gainNode.gain.value = parseFloat(mainVolumeSlider.value) //the gain is the specific audio property we are adjusting (in this case we are adjusting
+//the main volume slider to start at the beginning)** and we set its value
+//gamenode.gain is read only so we set the value property
+//this sets the slider initially at the beginning of the slider
 
 // We don't know what the duration is yet - not until we are playing!
 // mainSeekSlider.max = tenorAudio.duration.toString()
 // So we'll set a known bad value, and update it later!
 //the duration is only if we build our own progress bar but if we use our html element controls that gives us a progress bar for free 
-//and we can go back and fourth specific points 
+//and we can go back and fourth specific points (we had a lot of controls defined in our CSS so how do we know which ones make the progress bar)**
 let duration = -1;
 
 // These Sources are attached to the audioContext from the HTML
@@ -39,14 +40,14 @@ const bassSource = audioContext.createMediaElementSource(bassAudio)
 // From the slides...
 // Audio Context (audioContext) manager or the controller that is working around the other audio objects (how the audio communicates with each other)
 //   has
-// Sources (each of the voice sources)
+// Sources (each of the voice sources) (the audios themselves)**
 //   which pass through zero or many
-// Effects (the gainNode to control volume)
+// Effects (the gainNode to control volume) (things we add to enhance audio like compression, etc.)**
 //   on the way to
-// Outputs (audioContext.destination ... the computer speakers)
+// Outputs (audioContext.destination ... the computer speakers) (where we wanna output it like our left or right ear only or speaker only)**
 tenorSource.connect(gainNode).connect(audioContext.destination) //we adjust the volume for these elements all at one time and we can go anywhere
 //anything flowing through gainnode will be affected with by the gainnode on its way to the destination (gainode lets us move from source to destination)
-//gainnode prevents us from starting the default at max volume 
+//gainnode prevents us from starting the default at max volume (gain node is used for volume)**
 leadSource.connect(gainNode).connect(audioContext.destination)
 baritoneSource.connect(gainNode).connect(audioContext.destination)
 bassSource.connect(gainNode).connect(audioContext.destination)
@@ -80,7 +81,9 @@ playButton.addEventListener('click', () => {
     //we need to resume audio context and the browser says it can only happen with a click or touch event or user interaction with the page
     //if the user clicks the play button we play the audio and its ok to do it because its inside the click button and the user
     //intends to play the audio
-    audioContext!.resume();
+    audioContext!.resume(); //if the audio is not null then play it that would never be the case though for being null
+    //right because even though it reaches the end it would
+    //not be null because the audio could start all over again**
   }
 
   // MDN : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
@@ -91,23 +94,31 @@ playButton.addEventListener('click', () => {
   } else if (playButton.dataset.playing === 'true') {
     pause();
   }
-  //how does it know to alternate if we are not setting he values
-  //to true or false after we click the button**
+  //how does it know to alternate if we are not setting the values
+  //to true or false after we click the button (play and pause change the dataset values for us)
+
+  //so if we resume the audio if its in a suspended state is that only for intial setup or is that for everytime we press play and pause
+  //because if its for every time we press play and pause why would we have it then since its defined above the condtionals 
+  //shouldnt it check first before playing same for when we initially want to play the audio**
+
 })
 
 // MDN : https://developer.mozilla.org/en-US/docs/Web/API/GainNode
-// Setting gainNode.gain.value changes the volume of an AudioContext**
+// Setting gainNode.gain.value changes the volume of an AudioContext
 mainVolumeSlider.addEventListener('input', () => {
   gainNode!.gain.value = parseFloat(mainVolumeSlider.value); //input is when we physically move the slider for the volume 
   //then we drag the value to the value we dragged it to 
-  //gain expects a numeric value and the volume slider is a string so we convert it to a float (lets us fractional decimal component to it)
+  //gain expects a numeric value and the volume slider is a string so we convert it to a float (lets us have a fractional decimal component to it)
+
+  //is the !. a typescript thing just incase a value does not exist**
+  //is everything except a click event an input event (how to know when to use input events)**
 })
 
 // MDN : https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event
-// Fires when target's value changes ::as a direct result of user input::
+// Fires when target's value changes ::as a direct result of user input:: (what does the :: mean)**
 mainSeekSlider.addEventListener('input', () => {
   const targetTime = parseFloat(mainSeekSlider.value); //the seek slider is set to be from 0 to the duratino and getting that value as a number
-  //and set the 4 tracks to go to that position in their audio files 
+  //and set the 4 tracks to go to that position in their audio files when we drag the slider and below is when its actually playing**
   tenorAudio.currentTime = targetTime
   leadAudio.currentTime = targetTime
   baritoneAudio.currentTime = targetTime
@@ -118,7 +129,7 @@ mainSeekSlider.addEventListener('input', () => {
 // We can change mainSeekSlider.value (in response to timeupdate)
 // WITHOUT causing the mainSeekSlider to fire an input event
 // BECAUSE input only fires as a direct result of user input.
-// (otherwise, we'd be in danger of an infinite loop of updates)
+// (otherwise, we'd be in danger of an infinite loop of updates) (go over)**
 
 // MDN : https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/timeupdate_event
 // Fires when target media's currentTime has been updated.
@@ -134,6 +145,10 @@ tenorAudio.addEventListener('timeupdate', () => { //we listen to the tenoraudio 
     duration = knownDuration;
     mainSeekSlider.max = knownDuration.toString() //how long the bar has to be that plays the audio (updating the bar with the duration once
     //we know what it is)
+
+    //so basically whenever the audio is changing as it plays it changes the duration because the knownDuration changes so it goes into the conditional
+    //but for the max seek slider that is our current position in the bar of the whole song**
+    //how does the slider update for the above method with input if the duration does not change causing the knob to not change**
 
     //browser still may be loading the audio file so we check and see how long the duration is and implement it this way (dont use time from audio file)
   }

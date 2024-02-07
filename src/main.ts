@@ -8,12 +8,16 @@ const mainSeekSlider = document.querySelector('#main-seek-slider') as HTMLInputE
 
 // Parent element of all Part.markup elements
 const partsMarkup = document.querySelector('#parts') as HTMLElement;
+//this holds all the audios and in the HTML we made a class controls for each audio so
+//each audio will have a play bar (the children of a class get the elements the class has
+//like the controls right)**
 
 const audioContext = new AudioContext()
 
 // Make Part instances for each vocal part
 const parts: Part[] = [
-  new Part('Tenor', '#tenor-audio', audioContext),
+  new Part('Tenor', '#tenor-audio', audioContext), //this makes the main communicator between each audio and makes them audios for the
+  //browser themselevs**
   new Part('Lead', '#lead-audio', audioContext),
   new Part('Baritone', '#baritone-audio', audioContext),
   new Part('Bass', '#bass-audio', audioContext),
@@ -23,6 +27,7 @@ const parts: Part[] = [
 // (And apply that value to the others.)
 // We'll select the first one and call it mainAudioElement.
 const mainAudioElement = parts[0].audioElement; //get the audio element for the tenor (instances from the part class)
+//we could have gotten any instance right it doesnt have to be specific**
 
 // We still have a single GainNode for global volume
 const gainNode = audioContext.createGain()
@@ -35,7 +40,10 @@ let duration = -1;
 parts.forEach((part) => {
   part.patch().connect(gainNode).connect(audioContext.destination) //we get the audio file and we connect it to the source to the desintion
   //gainnode 
-  partsMarkup.appendChild(part.markup)
+  partsMarkup.appendChild(part.markup)  //we get our section that we defined in our JS file
+  //then we make that a child of the div for that specific part (why do we have 2 blocks
+  //to seperate the audios)**
+  //difference between section and a div**
 })
 
 

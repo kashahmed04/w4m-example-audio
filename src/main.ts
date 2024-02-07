@@ -39,11 +39,11 @@ let duration = -1;
 // AND append its HTML markup to the DOM
 parts.forEach((part) => {
   part.patch().connect(gainNode).connect(audioContext.destination) //we get the audio file and we connect it to the source to the desintion
-  //gainnode 
-  partsMarkup.appendChild(part.markup)  //we get our section that we defined in our JS file
-  //then we make that a child of the div for that specific part (why do we have 2 blocks
-  //to seperate the audios)**
-  //difference between section and a div**
+  //gainnode for the volume of each slider to be dragged around and the above is to initially start the volume at 0**
+  partsMarkup.appendChild(part.markup)  //does this only append the div with the names to the parts section
+  //because markup div only contained the h2**
+
+  //here we talk about volume but theres no volume to show is it in audio 4**
 })
 
 
@@ -88,7 +88,8 @@ mainSeekSlider.addEventListener('input', () => {
   })
 })
 
-mainAudioElement.addEventListener('timeupdate', () => {
+mainAudioElement.addEventListener('timeupdate', () => { //timeupdate is for as the audio is playing
+  //to update the main knob (why dont we use main seek slider here and a random audio same for pause)**
   mainSeekSlider.value = mainAudioElement.currentTime.toString()
 
   const knownDuration = mainAudioElement.duration;

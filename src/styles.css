@@ -24,5 +24,5 @@ button, input, label {
 .control.audio {
   width: 400px;
   gap: 12px;
-  align-items: center;
+  align-items: center; /*is this what shows the audios but since we had display none in audio 1 it did not show up**/
 }

@@ -6,6 +6,10 @@ export class Part {
   gainNode: GainNode; // individual part volume control!
   //this has the volume for each instance of the audio**
 
+  //how does it know not to show up in audio 3 for volume but in audio 4 it does is it because
+  //in the expand markup we actually set up the input for it to show and we didnt in audio 3 even 
+  //though we had volume settings set up so it never showed the for volume slider in audio 3**
+
   markup: HTMLDivElement;
   vocalRange: string;
 
@@ -18,6 +22,15 @@ export class Part {
     // set up the local GainNode
     //const gainNode = audioContext.createGain() (like audio 1 so let us actually
     //change the volume of the audio)**
+
+    // // Create an AudioContext to hook up our flow.
+    // const audioContext = new AudioContext() do we not have to setup new 
+    //audio context since we made a new instance and it's like decalring a 
+    //new audiocontext() already**
+
+    // // GainNode changes the volume
+    // const gainNode = audioContext.createGain()
+
     this.gainNode = audioContext.createGain()
     this.gainNode.gain.value = 1 //why do we make it one for the value to start at**
     //and also in our index.html the max is 0.5 so how can it go to one and still not reach
@@ -59,13 +72,15 @@ export class Part {
     // with a dedicated 'input' listener
     input.addEventListener('input', () => {
       this.gainNode.gain.value = parseFloat(input.value);
-      //get the volume from the specific slider 
+      //get the volume from the specific slider so we can move it around
+      //and it can update or is this inital setup (where do we do intiial setup)**
+
     })
 
     this.markup.appendChild(h2)
     this.markup.appendChild(div)
-    //append the name of the audio to the h2
-    //and append the div with all the information we just created into the markup
+    //append the name of the audio to the markup div 
+    //and append the div with all the information we just created (volume slider information) into the markup
     //div**
   }
 
@@ -73,7 +88,8 @@ export class Part {
     // and connect it as part of the patch chain!
     return this.sourceNode.connect(this.gainNode);
     //part.patch().connect(gainNode).connect(audioContext.destination)
-    //what is the difference between this statement in the main JS and the class**
+    //what is the difference between this statement in the main JS and the class
+    //why do we do it twice**
   }
   
   play(): void {

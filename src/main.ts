@@ -1,7 +1,7 @@
 import './reset.css'
 import './styles.css'
 
-//audio 2 tells the difference between audio 1 and 2, audio 3 tells the difference between audio 2 and 3, and audio 4 tells the difference between audio 3 and 4**
+//audio 2 tells the difference between audio 1 and 2, audio 3 tells the difference between audio 2 and 3, and audio 4 tells the difference between audio 3 and 4
 // Inputs:
 const playButton = document.querySelector('#play-button') as HTMLButtonElement;
 const mainVolumeSlider = document.querySelector('#main-volume-slider') as HTMLInputElement;
@@ -352,7 +352,6 @@ tenorAudio.addEventListener('ended', () => {
 
   we take the data at postiion 8 at divide it by 255 to make it since (we chose smaple 8 because it looked the most interesting when it played)**
 
-  
 
 
 

@@ -51,10 +51,11 @@ tenorSource.connect(gainNode).connect(audioContext.destination) //we adjust the 
 leadSource.connect(gainNode).connect(audioContext.destination)
 baritoneSource.connect(gainNode).connect(audioContext.destination)
 bassSource.connect(gainNode).connect(audioContext.destination)
+//adds each inidividual volume for each sound**
 
 // Helper function to play multiple sources (and update button state).
 const play = () => {
-  tenorAudio.play();
+  tenorAudio.play(); //this sets up the play and pause for each element 
   leadAudio.play();
   baritoneAudio.play();
   bassAudio.play();
@@ -85,6 +86,8 @@ playButton.addEventListener('click', () => {
     //right because even though it reaches the end it would
     //not be null because the audio could start all over again**
   }
+  //this event listender is responsible for playing all the autios because the codontionals account for all the audios
+  //but the above method is for the main play for all the audios associated with the seek slider**
 
   // MDN : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
   // element.dataset describes and manages data-* attributes
@@ -118,11 +121,12 @@ mainVolumeSlider.addEventListener('input', () => {
 // Fires when target's value changes ::as a direct result of user input:: (what does the :: mean)**
 mainSeekSlider.addEventListener('input', () => {
   const targetTime = parseFloat(mainSeekSlider.value); //the seek slider is set to be from 0 to the duratino and getting that value as a number
-  //and set the 4 tracks to go to that position in their audio files when we drag the slider and below is when its actually playing**
+  //and set the 4 tracks to go to that position in their audio files when we drag the main seek slider and below is when its actually playing**
   tenorAudio.currentTime = targetTime
   leadAudio.currentTime = targetTime
   baritoneAudio.currentTime = targetTime
   bassAudio.currentTime = targetTime
+  //we add a main slider for the playtime for eahc audio**
 })
 
 // NOTICE - the interaction between input and timeupdate!
@@ -133,6 +137,8 @@ mainSeekSlider.addEventListener('input', () => {
 
 // MDN : https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/timeupdate_event
 // Fires when target media's currentTime has been updated.
+//why do we use tenorAudio here initially as well as for pause cant we use the main seek slider how does it stop and play the 
+//rest of the audios for the timeupdate then**
 tenorAudio.addEventListener('timeupdate', () => { //we listen to the tenoraudio track and it gives time updates for its current time as it plays
   //and we respond to that and have the knob travel along with the audio as it plays 
   mainSeekSlider.value = tenorAudio.currentTime.toString()

@@ -182,3 +182,26 @@ tenorAudio.addEventListener('ended', () => {
 //what is the difference between audio 2 and audio 1 because in GitHub it says
 //This branch isn't all that much different from `audio-01` ... it just displays the controls for the individual parts.**
 //I looked at audio 1 and it looks the same with the controls for the individual parts so how are they different then**
+
+
+
+
+/** 
+ * SLIDES:
+ * 
+ * Context has sources which pass through zero-many effects on the way to outputs. 
+ * so basically this means that the sources like a file or a microphone we use in real time could have 0 or multiple effects
+ * on its way to output the file or what we said into the micrphone and where to output it (left or right ear or speaker)
+ * 
+ * is the sources like a gutiar peadeal board to connect all the audios together or is it the whole process (sources, effects, and output also known
+ * as audio context)**
+ * 
+ * for the last slide is it saying that each individual volume slider (since its gain and gain only involves volume)
+ * its conected to the global volume slider so as we adjust the global one for all cases it will also adjust
+ * the local volumes and that leads to the destination which is the output for us to hear**
+ * 
+ * or are the volumes seperate for all cases and the global volume does not effect the other audios
+ * or the other audios dont effect the global volume**
+ * 
+ * 
+*/

@@ -92,3 +92,10 @@ mainAudioElement.addEventListener('timeupdate', () => {
 mainAudioElement.addEventListener('ended', () => {
   pause();
 })
+
+
+//the CSS takes the control class then within the control is the 
+//part class and it makes it a flexbox**
+//the .part label is within the control and part class the label for the volume
+//get a font size of 12**
+//how does the label move on top of the volume bar**

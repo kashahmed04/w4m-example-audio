@@ -161,3 +161,7 @@ tenorAudio.addEventListener('ended', () => {
 })
 
 //once we press play again the browser lets us restart the audio
+
+//what is the difference between audio 2 and audio 1 because in GitHub it says
+//This branch isn't all that much different from `audio-01` ... it just displays the controls for the individual parts.**
+//I looked at audio 1 and it looks the same with the controls for the individual parts so how are they different then**

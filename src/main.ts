@@ -205,3 +205,17 @@ tenorAudio.addEventListener('ended', () => {
  * 
  * 
 */
+
+
+
+
+/*
+  NEW NOTES:
+
+  we are going to look at 3 different audios today 
+
+  BRANCH 4B:
+
+  we go to current branch tab to change bracnhes 
+
+*/

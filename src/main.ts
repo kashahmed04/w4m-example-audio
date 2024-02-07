@@ -38,7 +38,8 @@ const baritoneSource = audioContext.createMediaElementSource(baritoneAudio)
 const bassSource = audioContext.createMediaElementSource(bassAudio)
 
 // From the slides...
-// Audio Context (audioContext) manager or the controller that is working around the other audio objects (how the audio communicates with each other)
+// Audio Context (audioContext) manager or the controller that is working around the other audio objects 
+//(how the audio communicates with each other)
 //   has
 // Sources (each of the voice sources) (the audios themselves)**
 //   which pass through zero or many

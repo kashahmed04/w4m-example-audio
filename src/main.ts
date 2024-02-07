@@ -99,3 +99,4 @@ mainAudioElement.addEventListener('ended', () => {
 //the .part label is within the control and part class the label for the volume
 //get a font size of 12**
 //how does the label move on top of the volume bar**
+//where is the .control to make everything a flexbox in the HTML**

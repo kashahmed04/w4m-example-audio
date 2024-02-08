@@ -19,21 +19,21 @@
       <div class="control audio"><label>Bass</label><audio controls id="bass-audio" src="./mp3/heart_of_my_heart/bass.mp3"></audio></div>
     </section>
 
+    <!--audio controls this is what gets added to change the output to show on the browser-->
+
     <section class="controls">
       <div class="control">
         <label>Seek</label>
-        <input type="range" id="main-seek-slider" min="0" max="0.5" value="0" step="0.01" /> <!--the range we have is for the volume
-        and we have a minimum and maximum and value is where it starts and the step is the increment between the step value (0-0.5 represents
-        what because wouldnt that be too small for the main slider for the audio)**-->
+        <input type="range" id="main-seek-slider" min="0" max="0.5" value="0" step="0.01" /> 
       </div>
       <div class="control">
         <label>Volume</label>
         <input type="range" id="main-volume-slider" min="0" max="0.5" value="0.5" step="0.01" />
-        <!--is there a reason why this starts out at 0.5 instead of 0**-->
+        <!--because we are playing 4 audio files that are themselves loud the volume had to be pulled back (usually 0-1)-->
       </div>
       <div class="control">
-        <button id="play-button" data-playing="false" role="switch" aria-checked="false">Play</button>
-        <!--what does aria-checked mean also does role mean it alternates between states (can be more than 2 states)**-->
+        <button id="play-button" data-playing="false" role="switch">Play</button>
+        <!--the role is the state for on or off and it starts off as off-->
       </div>
     </section>
   </body>

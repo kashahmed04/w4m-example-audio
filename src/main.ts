@@ -103,3 +103,6 @@ mainAudioElement.addEventListener('ended', () => {
 
 //no difference in the js for audio 3 and 4 right accept for in the class
 //we return return this.sourceNode.connect(this.gainNode) for the first foreach loop right**
+
+//each inidivual volume is what patch returns then we connect the global gain
+//node to the destination for the main connect gain in the JS

@@ -4,11 +4,7 @@ export class Part {
   sourceNode: MediaElementAudioSourceNode;
 
   gainNode: GainNode; // individual part volume control!
-  //this has the volume for each instance of the audio**
-
-  //how does it know not to show up in audio 3 for volume but in audio 4 it does is it because
-  //in the expand markup we actually set up the input for it to show and we didnt in audio 3 even 
-  //though we had volume settings set up so it never showed the for volume slider in audio 3**
+  //this has the volume for each instance of the audio (yes)
 
   markup: HTMLDivElement;
   vocalRange: string;
@@ -21,20 +17,20 @@ export class Part {
 
     // set up the local GainNode
     //const gainNode = audioContext.createGain() (like audio 1 so let us actually
-    //change the volume of the audio)**
+    //change the volume of the audio)
 
     // // Create an AudioContext to hook up our flow.
     // const audioContext = new AudioContext() do we not have to setup new 
     //audio context since we made a new instance and it's like decalring a 
-    //new audiocontext() already**
+    //new audiocontext() already
 
     // // GainNode changes the volume
     // const gainNode = audioContext.createGain()
 
     this.gainNode = audioContext.createGain()
-    this.gainNode.gain.value = 1 //why do we make it one for the value to start at**
-    //and also in our index.html the max is 0.5 so how can it go to one and still not reach
-    //the end of the volume bar**
+    this.gainNode.gain.value = 1 //we say each sources that its 100 percent scaled but in the HTML globally its 0.5
+    //and by default we set it to the default for whatever the volume was when we downloaded the file (the JS updates it to
+    //a more updated value)
 
     this.vocalRange = vocalRange;
     this.markup = document.createElement('div');
@@ -43,9 +39,7 @@ export class Part {
   }
 
   expandMarkup(): void {
-    this.markup.className = 'control part'; //whats the difference between control part
-    //and control from audio 3 being control and audio 4 being control part and audio
-    //1 and 2 also being control part but only in the HTML**
+    this.markup.className = 'control part'; //for the css
 
     const h2 = document.createElement('h2')
     h2.innerText = this.vocalRange;
@@ -58,10 +52,9 @@ export class Part {
     //add the volume label
 
     const input = document.createElement('input')
-    input.type = 'range' //range lets is become a slider right**
+    input.type = 'range' //range lets is become a slider right (yes)
     //why could we not put this in the audio element itself (do we usually have to make
-    //an input for volume sliders then)**
-    //what creates the slider for the audios to go back and fourth then individually**
+    //an input for volume sliders then)(we want to make indidual copies for each slider so we make it here)
     input.min = '0'
     input.max = '4'
     input.step = '0.01'
@@ -73,7 +66,7 @@ export class Part {
     input.addEventListener('input', () => {
       this.gainNode.gain.value = parseFloat(input.value);
       //get the volume from the specific slider so we can move it around
-      //and it can update or is this inital setup (where do we do intiial setup)**
+      //and it can update (yes))
 
     })
 
@@ -81,15 +74,16 @@ export class Part {
     this.markup.appendChild(div)
     //append the name of the audio to the markup div 
     //and append the div with all the information we just created (volume slider information) into the markup
-    //div**
+    //div (yes)
   }
 
-  patch(): AudioNode { //why does it take in audio node now**
+  patch(): AudioNode { //audio node is a more generic type and mediaaudiosourcenode is specific type and audionode is specific
+    //type which is a parent class
     // and connect it as part of the patch chain!
     return this.sourceNode.connect(this.gainNode);
     //part.patch().connect(gainNode).connect(audioContext.destination)
-    //what is the difference between this statement in the main JS and the class
-    //why do we do it twice**
+    //the one in the class is the one that only effects the specific voice volume (a single voice)
+    //the one in main.ts applies to all voice parts globally
   }
   
   play(): void {

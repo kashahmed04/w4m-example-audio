@@ -10,7 +10,7 @@ const mainSeekSlider = document.querySelector('#main-seek-slider') as HTMLInputE
 const partsMarkup = document.querySelector('#parts') as HTMLElement;
 //this holds all the audios and in the HTML we made a class controls for each audio so
 //each audio will have a play bar (the children of a class get the elements the class has
-//like the controls right)**
+//like the controls right)
 
 const audioContext = new AudioContext()
 
@@ -27,7 +27,7 @@ const parts: Part[] = [
 // (And apply that value to the others.)
 // We'll select the first one and call it mainAudioElement.
 const mainAudioElement = parts[0].audioElement; //get the audio element for the tenor (instances from the part class)
-//we could have gotten any instance right it doesnt have to be specific**
+//we could have gotten any instance right it doesnt have to be specific(yes)
 
 // We still have a single GainNode for global volume
 const gainNode = audioContext.createGain()
@@ -39,11 +39,10 @@ let duration = -1;
 // AND append its HTML markup to the DOM
 parts.forEach((part) => {
   part.patch().connect(gainNode).connect(audioContext.destination) //we get the audio file and we connect it to the source to the desintion
-  //gainnode for the volume of each slider to be dragged around and the above is to initially start the volume at 0**
+  //gainnode for the volume of each slider to be dragged around and the above is to initially start the volume at 0
   partsMarkup.appendChild(part.markup)  //does this only append the div with the names to the parts section
-  //because markup div only contained the h2**
+  //because markup div only contained the h2 (yes)
 
-  //here we talk about volume but theres no volume to show is it in audio 4**
 })
 
 
@@ -89,7 +88,6 @@ mainSeekSlider.addEventListener('input', () => {
 })
 
 mainAudioElement.addEventListener('timeupdate', () => { //timeupdate is for as the audio is playing
-  //to update the main knob (why dont we use main seek slider here and a random audio same for pause)**
   mainSeekSlider.value = mainAudioElement.currentTime.toString()
 
   const knownDuration = mainAudioElement.duration;

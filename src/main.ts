@@ -53,11 +53,11 @@ const bassSource = audioContext.createMediaElementSource(bassAudio)
 //right ear only input is a mix of outputs and effects)
 tenorSource.connect(gainNode).connect(audioContext.destination) //we adjust the volume for these elements all at one time and we can go anywhere
 //anything flowing through gainnode will be affected with by the gainnode on its way to the destination (gainode lets us move from source to destination)
-//gainnode prevents us from starting the default at max volume because above we set it as the volume slide value which was 0.5
+//gainnode prevents us from starting the default at max volume because above we set it as the volume slider value which was 0.5
 //and this allows us to actually move around the volume sliders individually for each element
 //from the start to the end of the slider(gain node is used for volume)
 
-//connect wires up the sources and the gain uses the min max to make the volume and the destination is the operating system like speakers or headphones
+//connect wires up the sources and the gain uses the min max to make sure the volume and the destination is the operating system like speakers or headphones
 leadSource.connect(gainNode).connect(audioContext.destination)
 baritoneSource.connect(gainNode).connect(audioContext.destination)
 bassSource.connect(gainNode).connect(audioContext.destination)
@@ -65,7 +65,7 @@ bassSource.connect(gainNode).connect(audioContext.destination)
 
 // Helper function to play multiple sources (and update button state).
 const play = () => {
-  tenorAudio.play(); //this sets up the play and pause for each element 
+  tenorAudio.play(); //this sets up the play and pause for each element
   leadAudio.play();
   baritoneAudio.play();
   bassAudio.play();

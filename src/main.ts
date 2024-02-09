@@ -152,6 +152,7 @@ mainSeekSlider.addEventListener('input', () => {
 //we play any one of them)
 //timeupdate is on an HTML media element like an audio or video and it fires off anytime during playback and the media element advances to a new time
 //seek slider does not have a time it represents a time (its not an HTML element for main seek slider so we use an individual audio element)
+//seek slider is not an audio itself so we use one audio to detect for the time
 tenorAudio.addEventListener('timeupdate', () => { //we listen to the tenoraudio track and it gives time updates for its current time as it plays
   //and we respond to that and have the main seek slider knob travel along with the tenor audio as it plays
   //sliders take inputs as strings

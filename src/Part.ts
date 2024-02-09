@@ -52,9 +52,9 @@ export class Part {
     //add the volume label
 
     const input = document.createElement('input')
-    input.type = 'range' //range lets is become a slider right (yes)
+    input.type = 'range' //range lets it become a slider right (yes)
     //why could we not put this in the audio element itself (do we usually have to make
-    //an input for volume sliders then)(we want to make indidual copies for each slider so we make it here)
+    //an input for volume sliders then)(we want to make individual copies for each slider so we make it here)
     input.min = '0'
     input.max = '4'
     input.step = '0.01'

@@ -93,14 +93,6 @@ mainAudioElement.addEventListener('ended', () => {
   pause();
 })
 
-
-//the CSS takes the control class then within the control is the 
-//part class and it makes it a flexbox**
-//the .part label is within the control and part class the label for the volume
-//get a font size of 12**
-//how does the label move on top of the volume bar**
-//where is the .control to make everything a flexbox in the HTML**
-
 //no difference in the js for audio 3 and 4 right accept for in the class
 //we return return this.sourceNode.connect(this.gainNode) for the first foreach loop right**
 

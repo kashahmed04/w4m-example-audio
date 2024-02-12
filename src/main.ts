@@ -101,7 +101,15 @@ mainAudioElement.addEventListener('ended', () => {
   pause();
 })
 
-//since we paused the tenor audio here the main seek slider also gets paused because of the timeupdate defined above
-//because that makes the mainseekslider value equal to the current time of the tenor audio which is paused then above that
-//is the mainseekslider event listener and that makes each part equal to the current time of the main seek slider
-//which is paused so they all pause****
+// <<<<<<< Updated upstream
+// //since we paused the tenor audio here the main seek slider also gets paused because of the timeupdate defined above
+// //because that makes the mainseekslider value equal to the current time of the tenor audio which is paused then above that
+// //is the mainseekslider event listener and that makes each part equal to the current time of the main seek slider
+// //which is paused so they all pause****
+// =======
+// //no difference in the js for audio 3 and 4 right accept for in the class
+// //we return return this.sourceNode.connect(this.gainNode) for the first foreach loop right**
+
+// //each inidivual volume is what patch returns then we connect the global gain
+// //node to the destination for the main connect gain in the JS
+// >>>>>>> Stashed changes

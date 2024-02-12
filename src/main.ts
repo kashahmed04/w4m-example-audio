@@ -38,10 +38,11 @@ let duration = -1;
 const tenorSource = audioContext.createMediaElementSource(tenorAudio) //create the audio from the above elements that were defined 
 const leadSource = audioContext.createMediaElementSource(leadAudio)
 const baritoneSource = audioContext.createMediaElementSource(baritoneAudio)
-const bassSource = audioContext.createMediaElementSource(bassAudio)
+const bassSource = audioContext.createMediaElementSource(bassAudio) 
 
 // From the slides...
-// Audio Context (audioContext) manager or the controller that is working around the other audio objects (source is guitar and peadals would be effects and the
+// Audio Context (audioContext) manager or the controller that is working around the other audio objects (source is guitar and
+//peadals would be effects and the
 //amp would be destination and the whole system is the audio context)
 //(how the audio communicates with each other)
 //   has
@@ -93,9 +94,9 @@ playButton.addEventListener('click', () => {
     //if the user clicks the play button we play the audio and its ok to do it because its inside the click button and the user
     //intends to play the audio
     audioContext!.resume(); //if the audio is not null then play it that would never be the case though for being null
-    //right because even though it reaches the end it would
-    //not be null because the audio could start all over again but would it be suspended once it got to the end
-    //and we have to press play again the retart (it remains active even though we reach the end because we can restart the audio)
+    //because even though it reaches the end it would
+    //not be null because the audio could start all over again but it would be suspended once it got to the end
+    //and we have to press play again for the restart (it remains active even though we reach the end because we can restart the audio)
   }
 
   //the above contional is if the browser is allowed to play the content at all and it detects if the audio is waiting for user action to play

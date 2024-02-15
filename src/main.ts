@@ -58,6 +58,9 @@ tenorSource.connect(gainNode).connect(audioContext.destination) //we adjust the 
 //and this allows us to actually move around the volume sliders individually for each element
 //from the start to the end of the slider(gain node is used for volume)
 
+//since we made the main volume slider the max value which was 0.5 for sound (the whole bar) how does it know 
+//to make the maxmimum the same 0.5 for the audios even though they had no value defined for them**
+
 //connect wires up the sources and the gain uses the min max to make sure the volume and the destination is the operating system like speakers or headphones
 leadSource.connect(gainNode).connect(audioContext.destination)
 baritoneSource.connect(gainNode).connect(audioContext.destination)
@@ -95,8 +98,10 @@ playButton.addEventListener('click', () => {
     //intends to play the audio
     audioContext!.resume(); //if the audio is not null then play it that would never be the case though for being null
     //because even though it reaches the end it would
-    //not be null because the audio could start all over again but it would be suspended once it got to the end
-    //and we have to press play again for the restart (it remains active even though we reach the end because we can restart the audio)
+    //not be null because the audio could start all over again but it would be suspended once it got to the end**
+    //and we have to press play again for the restart so its not suspended**
+    // (it remains active even though we reach the end because we can restart the audio)
+    //so its suspended when we pause or when we reach the end of the audio but when its playing its not suspended**
   }
 
   //the above contional is if the browser is allowed to play the content at all and it detects if the audio is waiting for user action to play
@@ -105,6 +110,10 @@ playButton.addEventListener('click', () => {
   // MDN : https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
   // element.dataset describes and manages data-* attributes
   // useful for managing state on elements
+  // if(playButton.innerText == "play"){ instead of having a dataset for the play button cant we do a conditional based on the innerHTML
+                                          //of play button if its playing or paused to play the audio or stop it**
+
+  // }
   if (playButton.dataset.playing === 'false') {
     play();
   } else if (playButton.dataset.playing === 'true') {
@@ -168,6 +177,12 @@ tenorAudio.addEventListener('timeupdate', () => { //we listen to the tenoraudio 
     duration = knownDuration;
     mainSeekSlider.max = knownDuration.toString() //how long the bar has to be that plays the audio (updating the bar with the duration once
     //we know what it is)
+
+    //this method specifically runs the whole time we are on the browser even when the audio is not playing
+    //to fix the durations of the audio or just leave the knob at the beginning of the slider right and the rest of the methods
+    //only run when it detects that event on the screen or are they also running constantly in the background**
+
+    //how to know what is constantly playing in the background and what is not in general**
 
     //browser still may be loading the audio file so we check and see how long the duration is and implement it this way (dont use time from audio file)
   }

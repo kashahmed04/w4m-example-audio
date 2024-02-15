@@ -99,7 +99,7 @@ mainAudioElement.addEventListener('timeupdate', () => { //timeupdate is for as t
 })
 
 mainAudioElement.addEventListener('ended', () => {
-  pause();
+  pause(); //pause method pauses all the audios and the main seek slider gets pasued automatically by the timeupdate method**
 })
 
 // <<<<<<< Updated upstream

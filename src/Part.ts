@@ -30,7 +30,7 @@ export class Part {
     this.gainNode = audioContext.createGain()
     this.gainNode.gain.value = 1 //we say each sources that its 100 percent scaled but in the HTML globally its 0.5
     //and by default we set it to the default for whatever the volume was when we downloaded the file (the JS updates it to
-    //a more updated value)
+    //a more updated value)**
 
     this.vocalRange = vocalRange;
     this.markup = document.createElement('div');

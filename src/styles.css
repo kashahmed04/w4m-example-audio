@@ -44,7 +44,9 @@ h2 {
 //the CSS takes the control class then within the control is the 
 //part class gives the gap in between each of the volume sliders
 //in control we set the flex box for the audios
-//the .part label is within the control and part class the label for the volume
-//get a font size of 12
+//the .part label is within the control part and part class is in markup
+//and theres the label for the volume the .part is the class and the label is the element)** (why would we not do
+//.control .part label**
+//gets a font size of 12
 //how does the label move on top of the volume bar (its for a display flex and we say display block for the label and it takes up the
 //whole width so thats what puts volume there)*/

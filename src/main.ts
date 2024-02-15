@@ -10,6 +10,9 @@ const mainSeekSlider = document.querySelector('#main-seek-slider') as HTMLInputE
 const partsMarkup = document.querySelector('#parts') as HTMLElement;
 
 const audioContext = new AudioContext()
+//when we make a new audiocontext and attach it to each audio each audio already has an instance because of the new keyword
+//and the class reference each instance of the audio with the audiocontext attached to it**
+
 
 // Make Part instances for each vocal part
 const parts: Part[] = [

@@ -146,6 +146,9 @@ mainSeekSlider.addEventListener('input', () => {
   baritoneAudio.currentTime = targetTime
   bassAudio.currentTime = targetTime
   //this takes the value of seek slider and updates all audio files to go to that time 
+
+  //if this is main input of seek slider how does the other audio change as time goes on because this only takes the input
+  //of when we move the slider**
 })
 
 // NOTICE - the interaction between input and timeupdate!

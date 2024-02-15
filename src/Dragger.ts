@@ -23,7 +23,11 @@ export class Dragger {
   positionCallback: ((x: Coordinates) => void) | null = null
 
   constructor(element: HTMLElement, coordinates: Coordinates) {
+<<<<<<< Updated upstream
     this.element = element
+=======
+    this.element = element 
+>>>>>>> Stashed changes
     this.labelElement = document.createElement('p')
 
     // add a whole bunch of HTML nodes to make the character

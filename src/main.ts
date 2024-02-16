@@ -15,6 +15,10 @@ const bassAudio = document.querySelector('#bass-audio') as HTMLAudioElement;
 
 // Create an AudioContext to hook up our flow.
 const audioContext = new AudioContext()
+//the audio context is shared across all instances of the audio
+//manager (or sandbox) or context in which the audio operations are happening 
+
+//listener and panner node require a z coordinate but we could have hard coded them as 0 
 
 // GainNode changes the volume (which we grab from our slider)
 const gainNode = audioContext.createGain() //makes the object that controls the slider to go back and forth

@@ -24,7 +24,7 @@ const audioContext = new AudioContext()
 const gainNode = audioContext.createGain() //makes the object that controls the slider to go back and forth
 
 gainNode.gain.value = parseFloat(mainVolumeSlider.value) //the gain is the specific audio property we are adjusting (in this case we are adjusting
-//the main volume slider to start at the beginning) and we set its value
+//the main volume slider to start at the end) and we set its value
 //gamenode.gain is read only so we set the value property
 //this sets the slider initially at the beginning of the slider
 //so gain is only used for volume usually and we change its value for where the volume slider starts at for gain
